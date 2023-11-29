@@ -1,6 +1,10 @@
 import Cell from "./Cell";
 
-const Board = ({ playerPostitions = [], currentPlayer = null }) => {
+const Board = ({
+  playerPostitions = [],
+  currentPlayer = null,
+  openDescription,
+}) => {
   return (
     <div>
       <div className="cells-container">
@@ -9,7 +13,11 @@ const Board = ({ playerPostitions = [], currentPlayer = null }) => {
             let position = 100 - (row * 10 + col);
             let player = playerPostitions.indexOf(position);
             return (
-              <Cell position={position} player={player >= 0 ? player : null} />
+              <Cell
+                position={position}
+                player={player >= 0 ? player : null}
+                openDescription={openDescription}
+              />
             );
           });
           return row % 2 === 0 ? cells : cells.reverse();
